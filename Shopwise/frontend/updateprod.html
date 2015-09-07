@@ -1,0 +1,53 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="container">
+
+<div class="row">
+    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+        <form role="form" method="POST" action="/edit/{{instance.key.id()}}">
+            <h2>Edit Products <small>It's free and always will be.</small></h2>
+            <hr class="colorgraph">
+            
+                    <div class="form-group">
+                        <input type="text" name="prod_name" id="prod_name" class="form-control input-lg" placeholder="Product name" tabindex="1" value = "{{ prod.prod_name }}">
+                    </div>
+                    <div class="form-group">
+                      <input type ="text" class="form-control input-lg" rows="5" id="description" tabindex="2" name="description" placeholder="Description" value = "{{ prod.description }}">
+                    </div>
+           <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <input type="text" name="price" id="price" class="form-control input-lg" placeholder="Price" tabindex="3" value = "{{'%0.2f'|format(prod.price|float)}}">
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-6">
+                    <div class="form-group">
+                        <input type="text" name="quantity" id="quantity" class="form-control input-lg" placeholder="Quantity" tabindex="4" value="{{prod.quantity}}">
+                    </div>
+                </div>
+            </div>
+           
+            <div class="row">
+                <div class="col-xs-4 col-sm-3 col-md-3">
+                    
+                </div>
+               
+            </div>
+            
+            <hr class="colorgraph">
+            <div class="row">
+                <div class="col-xs-12 col-md-6"><input type="submit" value="Update Product" class="btn btn-primary btn-block btn-lg" tabindex="7"></div>
+                <div class="col-xs-12 col-md-6"><a href="/" class="btn btn-success btn-block btn-lg">Back</a></div>
+            </div>
+            {%if error %}
+            <h2>Error:{{error}}</h2>
+            {% endif %}
+            </div>
+        </form>
+    </div>
+</div>
+
+</div>
+
+{% endblock %}
